@@ -73,7 +73,7 @@ function FeaturedAuthors() {
 
         <a href="/browse" 
             className="text-slate-950 rounded text-base border border-amber-400 
-            px-6 py-2 w-fit inline-block mt-6 hover:bg-black hover:text-amber-400 transition-colors inline-flex items-center gap-5">
+            px-6 py-2 w-fit inline-block hover:bg-black hover:text-amber-400 transition-colors inline-flex items-center gap-5">
             <span className="lg:text-2xl">View All Authors</span>
             <img src={icon} alt="Icon" className="w-5 h-5"/>
         </a>
