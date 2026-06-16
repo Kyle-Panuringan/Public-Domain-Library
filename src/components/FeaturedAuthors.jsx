@@ -51,11 +51,17 @@ function FeaturedAuthors() {
     <section className="text-center bg-orange-100 uppercase p-5">
         <h2 className="tracking-widest text-2xl">Featured Authors</h2>
         <img src={line2} alt="Line Divider" className="w-50 text mx-auto"/>
-        <ul className="flex items-center justify-center gap-3 py-5 px-10">
+        
+        <ul className="flex overflow-x-auto gap-3 py-5 px-4 snap-x snap-mandatory scroll-smooth">
             {authors.map(author => (
-              <li key={author.fname+author.lname} className="shadow-lg bg-neutral-primary-soft block max-w-sm border border-slate-950 rounded shadow-xs w-100">
+              <li key={author.fname+author.lname} 
+                className="
+                  shadow-lg bg-neutral-primary-soft border border-slate-950 rounded 
+                  min-w-[280px] snap-start
+                  md:min-w-0 md:w-64 lg:w-72
+                ">
                 <img src={author.image} className=""/>
-                <h3 className="text-2xl tracking-widest">
+                <h3 className="text-sm  lg:text-1xl tracking-widest">
                   <span>{author.fname}</span><br />
                   <span>{author.lname}</span>
                 </h3>
@@ -64,12 +70,13 @@ function FeaturedAuthors() {
               </li>
             ))}
         </ul>
+
         <a href="/browse" 
             className="text-slate-950 rounded text-base border border-amber-400 
             px-6 py-2 w-fit inline-block mt-6 hover:bg-black hover:text-amber-400 transition-colors inline-flex items-center gap-5">
-            <span className="text-2xl">View All Authors</span>
+            <span className="lg:text-2xl">View All Authors</span>
             <img src={icon} alt="Icon" className="w-5 h-5"/>
-          </a>
+        </a>
     </section>
   )
 }

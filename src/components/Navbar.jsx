@@ -25,7 +25,7 @@ function Navbar() {
     },[menuClose]);
 
     return (
-        <header className="flex items-center border-b border-[#E5AB14] p-4 bg-slate-950 text-amber-100
+        <header ref={menuRef} className="flex items-center border-b border-[#E5AB14] p-4 bg-slate-950 text-amber-100
             justify-between lg:justify-evenly relative 
         ">
             {/* LEFT SIDE */}
@@ -70,7 +70,7 @@ function Navbar() {
             </div>
 
             <div
-                ref={menuRef}
+                
                 className={`
                     ${menuClose ? 'hidden':'block'}
                     absolute lg:static
@@ -87,8 +87,9 @@ function Navbar() {
                     ">
                         <li><a href="">Home</a></li>
                         <li><a href="">Browse</a></li>
+                        <li><a href="">Categories</a></li>
                         <li><a href="">Authors</a></li>
-                        <li><a href="">About</a></li>
+                        <li><a href="#">About</a></li>
                     </ul>
                 </nav>        
                 <form className="hidden lg:block">

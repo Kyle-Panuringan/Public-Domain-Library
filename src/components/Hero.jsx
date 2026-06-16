@@ -25,7 +25,9 @@ function Hero() {
     w-full
     flex
     items-center
-    lg:px-90
+    sm:px-10
+    lg:px-30
+    xl:px-90
   "
 >
   <div className="p-4">
@@ -36,7 +38,7 @@ function Hero() {
       <span className="text-4xl md:text-7xl">Public Domain</span><br />
       <span className="text-6xl md:text-8xl tracking-wider">Library</span>
     </h1>
-    <img src={line1} alt="Line Divider" className="w-100 lg:h-auto pt-5"/>
+    <img src={line1} alt="Line Divider" className="w-100 md:h-auto pt-5"/>
     <p className="text-white text-xl max-w-md mt-4">
       A curated collection of timeless works from history's greatest minds. Read, explore, and be inspired.
     </p>
