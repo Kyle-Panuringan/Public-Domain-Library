@@ -60,7 +60,7 @@ function Navbar() {
                         <form className="lg:block">
                             <input 
                                 type="search" name="" id="" placeholder="Search..." 
-                                className="border border-black bg-white placeholder:italic placeholder-gray-500 px-2 text-black rounded"
+                                className="border border-black bg-white placeholder:italic placeholder-gray-500 px-2 text-black rounded w-25 sm:w-auto"
                             />
                             <button>🔍</button>
                         </form>  

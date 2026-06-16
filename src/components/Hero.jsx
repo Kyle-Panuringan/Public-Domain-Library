@@ -1,30 +1,50 @@
 import hero from "../assets/hero.png";
+import icon from "../assets/icon.png";
+import line1 from "../assets/line1.png";
 
 function Hero() {
   return (
 <section 
   style={{ 
-    backgroundImage: `url(${hero})`,
+    backgroundImage: `
+      linear-gradient(
+        rgba(0,0,0,.2),
+        rgba(0,0,0,.2)
+      ),
+      url(${hero})
+    `,
     backgroundSize: 'cover',
     backgroundPosition: 'center'
   }}
-  className="min-h-screen px-20 flex flex-col gap-2 justify-center"
+  className="
+    min-h-screen
+    bg-cover 
+    bg-center 
+    bg-no-repeat 
+    h-screen 
+    w-full
+    flex
+    items-center
+    lg:px-90
+  "
 >
-  <div className="max-w-2xl">
-    <span className="text-white text-sm tracking-wider block">
+  <div className="p-4">
+    <span className="text-amber-400 text-xl tracking-wider block ">
       WELCOME TO THE
     </span>
     <h1 className="text-white">
-      <div className="text-4xl md:text-5xl text-[#E5AB14]">Public Domain</div>
-      <div className="text-6xl md:text-7xl font-bold">Library</div>
+      <span className="text-4xl md:text-7xl">Public Domain</span><br />
+      <span className="text-6xl md:text-8xl tracking-wider">Library</span>
     </h1>
-    <p className="text-white text-base md:text-lg max-w-md mt-4">
-      A curated collection of timeless works from history's greatest minds.
-      <br />
-      Read, explore, and be inspired.
+    <img src={line1} alt="Line Divider" className="w-100 lg:h-auto pt-5"/>
+    <p className="text-white text-xl max-w-md mt-4">
+      A curated collection of timeless works from history's greatest minds. Read, explore, and be inspired.
     </p>
-    <a href="/browse" className="text-white text-base border border-white px-6 py-2 w-fit inline-block mt-6 hover:bg-white hover:text-slate-950 transition-colors">
-      Browse Collection
+    <a href="/browse" 
+      className="uppercase text-amber-400 rounded text-base border border-amber-400 
+      px-6 py-2 w-fit inline-block mt-6 hover:bg-white hover:text-slate-950 transition-colors inline-flex items-center gap-5">
+      <span>Browse Collection</span>
+      <img src={icon} alt="Icon" className="w-5 h-5"/>
     </a>
   </div>
 </section>
