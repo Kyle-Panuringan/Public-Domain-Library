@@ -1,6 +1,14 @@
 
 import { useEffect, useRef, useState } from "react";
+import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.svg";
+
+const navLinks = [
+    { path: "/", label: "Home" },
+    { path: "/browse", label: "Browse" },
+    { path: "/authors", label: "Authors" },
+    { path: "/about", label: "About" },
+];
 
 function Navbar() {
     const [searchClose, setSearchClose] = useState(true);
@@ -85,11 +93,13 @@ function Navbar() {
                         text-[#E5AB14]
                         uppercase
                     ">
-                        <li><a href="">Home</a></li>
-                        <li><a href="">Browse</a></li>
-                        <li><a href="">Categories</a></li>
-                        <li><a href="">Authors</a></li>
-                        <li><a href="#">About</a></li>
+                        {
+                            navLinks.map(navLink => (
+                                <li key={navLink.label}>
+                                    <NavLink to={navLink.path} className="hover:text-white">{navLink.label}</NavLink>
+                                </li>
+                            ))
+                        }
                     </ul>
                 </nav>        
                 <form className="hidden lg:block">

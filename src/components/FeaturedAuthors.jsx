@@ -56,17 +56,17 @@ function FeaturedAuthors() {
             {authors.map(author => (
               <li key={author.fname+author.lname} 
                 className="
-                  shadow-lg bg-neutral-primary-soft border border-slate-950 rounded 
+                  shadow-lg bg-neutral-primary-soft border border-slate-950 rounded
                   min-w-[280px] snap-start
                   md:min-w-0 md:w-64 lg:w-72
                 ">
                 <img src={author.image} className=""/>
-                <h3 className="text-sm  lg:text-1xl tracking-widest">
+                <h3 className="text-md tracking-widest pt-2">
                   <span>{author.fname}</span><br />
                   <span>{author.lname}</span>
                 </h3>
                 <img src={line2} alt="Line Divider" className="w-30 text mx-auto"/>
-                <p>{author.lifespan}</p>
+                <p className="text-md tracking-widest pb-2">{author.lifespan}</p>
               </li>
             ))}
         </ul>
@@ -74,6 +74,7 @@ function FeaturedAuthors() {
         <a href="/browse" 
             className="text-slate-950 rounded text-base border border-amber-400 
             px-6 py-2 w-fit inline-block hover:bg-black hover:text-amber-400 transition-colors inline-flex items-center gap-5">
+            <img src={icon} alt="Icon" className="w-5 h-5"/>
             <span className="lg:text-2xl">View All Authors</span>
             <img src={icon} alt="Icon" className="w-5 h-5"/>
         </a>
