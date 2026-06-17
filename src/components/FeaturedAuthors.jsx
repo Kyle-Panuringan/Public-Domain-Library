@@ -52,7 +52,7 @@ function FeaturedAuthors() {
         <h2 className="tracking-widest text-2xl">Featured Authors</h2>
         <img src={line2} alt="Line Divider" className="w-50 text mx-auto"/>
         
-        <ul className="flex overflow-x-auto gap-3 py-5 px-4 snap-x snap-mandatory scroll-smooth">
+        <ul className="flex justify-start lg:justify-center overflow-x-auto gap-3 py-5 px-4 snap-x snap-mandatory scroll-smooth">
             {authors.map(author => (
               <li key={author.fname+author.lname} 
                 className="
@@ -60,7 +60,7 @@ function FeaturedAuthors() {
                   min-w-[280px] snap-start
                   md:min-w-0 md:w-64 lg:w-72
                 ">
-                <img src={author.image} className=""/>
+                <img src={author.image}/>
                 <h3 className="text-md tracking-widest pt-2">
                   <span>{author.fname}</span><br />
                   <span>{author.lname}</span>
