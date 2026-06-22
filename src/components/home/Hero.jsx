@@ -1,6 +1,6 @@
-import hero from "../assets/hero.png";
-import icon from "../assets/icon.png";
-import line1 from "../assets/line1.png";
+import hero from "../../assets/hero.png";
+import icon from "../../assets/icon.png";
+import line1 from "../../assets/line1.png";
 
 function Hero() {
   return (

@@ -1,10 +1,10 @@
-import icon from "../assets/icon.png";
-import line2 from "../assets/line2.png";
-import theTempest from "../assets/theTempest.png";
-import prideAndPrejudice from "../assets/prideAndPrejudice.png";
-import treasureIsland from "../assets/treasureIsland.png";
-import dracula from "../assets/dracula.png";
-import theThreeMusketeers from "../assets/theThreeMusketeers.png";
+import icon from "../../assets/icon.png";
+import line2 from "../../assets/line2.png";
+import theTempest from "../../assets/theTempest.png";
+import prideAndPrejudice from "../../assets/prideAndPrejudice.png";
+import treasureIsland from "../../assets/treasureIsland.png";
+import dracula from "../../assets/dracula.png";
+import theThreeMusketeers from "../../assets/theThreeMusketeers.png";
 
 const books = [
   {

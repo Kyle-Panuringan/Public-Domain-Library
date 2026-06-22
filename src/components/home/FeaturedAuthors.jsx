@@ -1,11 +1,11 @@
-import icon from "../assets/icon.png";
-import line2 from "../assets/line2.png";
-import williamShakespeare from "../assets/WilliamShakespeare.jpg";
-import janeAusten from "../assets/JaneAusten.jpg";
-import charlesDickens from "../assets/CharlesDickens.jpg";
-import markTwain from "../assets/MarkTwain.jpg";
-import ralphWaldoEmerson from "../assets/RalphWaldoEmerson.jpg";
-import johnBurroughs from "../assets/JohnBurroughs.jpg";
+import icon from "../../assets/icon.png";
+import line2 from "../../assets/line2.png";
+import williamShakespeare from "../../assets/WilliamShakespeare.jpg";
+import janeAusten from "../../assets/JaneAusten.jpg";
+import charlesDickens from "../../assets/CharlesDickens.jpg";
+import markTwain from "../../assets/MarkTwain.jpg";
+import ralphWaldoEmerson from "../../assets/RalphWaldoEmerson.jpg";
+import johnBurroughs from "../../assets/JohnBurroughs.jpg";
 
 const authors = [
   {

@@ -1,7 +1,7 @@
-import Categories from "../components/Categories"
-import FeaturedAuthors from "../components/FeaturedAuthors"
-import FeaturedBooks from "../components/FeaturedBooks"
-import Hero from "../components/Hero"
+import Categories from "../components/home/Categories"
+import FeaturedAuthors from "../components/home/FeaturedAuthors"
+import FeaturedBooks from "../components/home/FeaturedBooks"
+import Hero from "../components/home/Hero"
 
 function HomePage() {
   return (

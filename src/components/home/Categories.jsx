@@ -1,11 +1,11 @@
-import icon from "../assets/icon.png";
-import line2 from "../assets/line2.png";
-import mystery from "../assets/mystery.png";
-import fantasy from "../assets/fantasy.png";
-import romance from "../assets/romance.png";
-import horror from "../assets/horror.png";
-import history from "../assets/history.png";
-import poetry from "../assets/poetry.png";
+import icon from "../../assets/icon.png";
+import line2 from "../../assets/line2.png";
+import mystery from "../../assets/mystery.png";
+import fantasy from "../../assets/fantasy.png";
+import romance from "../../assets/romance.png";
+import horror from "../../assets/horror.png";
+import history from "../../assets/history.png";
+import poetry from "../../assets/poetry.png";
 
 const categories = [
   {
