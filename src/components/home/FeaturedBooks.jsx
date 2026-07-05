@@ -5,6 +5,7 @@ import prideAndPrejudice from "../../assets/prideAndPrejudice.png";
 import treasureIsland from "../../assets/treasureIsland.png";
 import dracula from "../../assets/dracula.png";
 import theThreeMusketeers from "../../assets/theThreeMusketeers.png";
+import { Link } from "react-router-dom";
 
 const books = [
   {
@@ -73,7 +74,7 @@ function FeaturedBooks() {
                     className="text-slate-950 rounded text-base border border-amber-400 
                     px-6 py-2 w-fit inline-block hover:bg-black hover:text-amber-400 transition-colors inline-flex items-center gap-5">
                     <img src={icon} alt="Icon" className="w-5 h-5"/>
-                    <span className="lg:text-2xl">View All Books</span>
+                    <Link to="/browse" className="lg:text-2xl">View All Books</Link>
                     <img src={icon} alt="Icon" className="w-5 h-5"/>
                 </a>
     </section>
