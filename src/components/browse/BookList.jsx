@@ -7,6 +7,7 @@ import line2 from "../../assets/line2.png";
 function BookList() {
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState("old");
+  const [grid, setGrid] = useState(true);
 
   const [inputPage, setInputPage] = useState("");
   const inputRef = useRef(null);
@@ -65,50 +66,52 @@ function BookList() {
     return books.map((book, index) => (
       <div
         key={index}
-        className="border border-black p-5 bg-white shadow-xl rounded text-center"
+        className={`border border-black p-5 bg-white shadow-xl rounded text-center ${grid ? "" : "mb-2"}`}
       >
         {book ? (
-          <div className="">
+          <div
+            className={`${grid ? "" : "flex justify-start items-start gap-2"}`}
+          >
             {book.cover_i ? (
               <img
                 src={`https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`}
                 alt={book.title}
-                className="rounded w-40 h-60 border border-black mx-auto"
+                className={`rounded w-40 h-60 border border-black ${grid ? "mx-auto" : ""}`}
               />
             ) : (
               <img
                 src={noCoverAvailable}
                 alt="No Cover Available"
-                className="rounded w-40 h-60 border border-black mx-auto"
+                className={`rounded w-40 h-60 border border-black ${grid ? "mx-auto" : ""}`}
               />
             )}
-            <div>
+            <div className={`${grid ? "" : "flex flex-col items-start"}`}>
               <h3
-                className="text-3xl font-semibold line-clamp-1 cursor-default"
+                className="font-bold text-sm lg:text-lg line-clamp-1 cursor-default"
                 title={book.title}
               >
                 {book.title || "Unknown Title"}
               </h3>
               {book.first_publish_year > 0 && (
-                <p className="text-md text-gray-600 pt-2">
+                <p className="text-sm lg:text-md text-gray-600">
                   {book.first_publish_year}
                 </p>
               )}
-              <p className="text-md text-gray-600 line-clamp-1">
+              <p className="text-sm lg:text-md text-gray-600 line-clamp-1">
                 {book.author_name?.[0] || "Unknown Author"}
               </p>
               <img
                 src={line2}
                 alt="Line Divider"
-                className="w-30 text mx-auto"
+                className={`py-2 w-30 ${grid ? "mx-auto" : ""}`}
               />
               <a
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block mt-1 py-2"
+                className="block text-sm lg:text-lg"
               >
-                Read
+                View Details
               </a>
             </div>
           </div>
@@ -142,10 +145,22 @@ function BookList() {
         <h2 className="text-4xl">All Works</h2>
         {/* Grid/List */}
         <div className="border border-black rounded-lg overflow-hidden">
-          <button className="bg-black text-white cursor-pointer px-3 py-1.5">
+          <button
+            className={`cursor-pointer px-3 py-1.5 ${grid ? "bg-black text-white" : ""}`}
+            onClick={() => {
+              setGrid(true);
+            }}
+          >
             ⊞ Grid
           </button>
-          <button className="cursor-pointer px-3 py-1.5">☰ List</button>
+          <button
+            className={`cursor-pointer px-3 py-1.5 ${grid ? "" : "bg-black text-white"}`}
+            onClick={() => {
+              setGrid(false);
+            }}
+          >
+            ☰ List
+          </button>
         </div>
       </div>
       {/* Header Bottom */}
@@ -174,7 +189,14 @@ function BookList() {
       </div>
 
       {/* Grid with fixed height */}
-      <div className="grid grid-cols-5 gap-4">{renderBooks()}</div>
+      <div
+        className={`
+        block
+        ${grid ? "lg:grid grid-cols-5 gap-4" : ""}
+        `}
+      >
+        {renderBooks()}
+      </div>
 
       {/* Pagination bar */}
       <div className="flex justify-end items-center mt-6 py-4 border-t">
