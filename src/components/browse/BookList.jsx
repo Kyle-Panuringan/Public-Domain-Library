@@ -56,17 +56,21 @@ function BookList() {
 
   // Error state
   if (isError) {
-    return <div className="text-red-500">Error: {error.message}</div>;
+    return (
+      <div className="text-red-500">
+        <h2>Error: {error.message}'n Please try again later.</h2>
+      </div>
+    );
   }
 
   const { books, totalItems, totalPages } = data;
 
   // render Books
   const renderBooks = () => {
-    return books.map((book, index) => (
+    return books?.map((book, index) => (
       <div
         key={index}
-        className={`border border-black p-5 bg-white shadow-xl rounded text-center ${grid ? "" : "mb-2"}`}
+        className={`bg-[#EEE8DE] p-5 shadow-xl rounded text-center ${grid ? "" : "mb-2"}`}
       >
         {book ? (
           <div
@@ -76,13 +80,13 @@ function BookList() {
               <img
                 src={`https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`}
                 alt={book.title}
-                className={`rounded w-40 h-60 border border-black ${grid ? "mx-auto" : ""}`}
+                className={`rounded w-50 h-70 border border-black ${grid ? "mx-auto" : ""}`}
               />
             ) : (
               <img
                 src={noCoverAvailable}
                 alt="No Cover Available"
-                className={`rounded w-40 h-60 border border-black ${grid ? "mx-auto" : ""}`}
+                className={`rounded w-50 h-70 border border-black ${grid ? "mx-auto" : ""}`}
               />
             )}
             <div className={`${grid ? "" : "flex flex-col items-start"}`}>
@@ -106,7 +110,7 @@ function BookList() {
                 className={`py-2 w-30 ${grid ? "mx-auto" : ""}`}
               />
               <a
-                href="#"
+                href={`https://openlibrary.org/books/${book.cover_edition_key}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-sm lg:text-lg"

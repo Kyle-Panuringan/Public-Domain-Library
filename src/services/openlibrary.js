@@ -40,6 +40,7 @@ export const fetchBooks = async ({ page = 1, limit = 15, sort = "title" }) => {
     books: data.docs,
     totalItems: data.numFound,
     cover: data.cover_i,
+    bookKey: data.cover_edition_key,
     currentPage: page,
     totalPages: Math.ceil(data.numFound / limit),
   };
