@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchBooks } from "../../services/openlibrary.js";
 import noCoverAvailable from "../../assets/noCoverAvailable.png";
@@ -10,7 +10,6 @@ function BookList() {
   const [grid, setGrid] = useState(true);
 
   const [inputPage, setInputPage] = useState("");
-  const inputRef = useRef(null);
 
   const limit = 15;
 
@@ -38,12 +37,6 @@ function BookList() {
     }
   };
 
-  const handleInputChange = (e) => {
-    // Only allow digits
-    const value = e.target.value.replace(/\D/g, "");
-    setInputPage(value);
-  };
-
   if (isLoading) {
     return (
       <div className="grid grid-cols-4 gap-4">
@@ -54,7 +47,6 @@ function BookList() {
     );
   }
 
-  // Error state
   if (isError) {
     return (
       <div className="text-red-500">
@@ -65,7 +57,6 @@ function BookList() {
 
   const { books, totalItems, totalPages } = data;
 
-  // render Books
   const renderBooks = () => {
     return books?.map((book, index) => (
       <div
@@ -126,7 +117,6 @@ function BookList() {
     ));
   };
 
-  // Navigation handlers
   const handlePrevPage = () => {
     if (page > 1) setPage((old) => old - 1);
   };
@@ -135,13 +125,11 @@ function BookList() {
     if (page < totalPages) setPage((old) => old + 1);
   };
 
-  // Sort change handler
   const handleSortChange = (e) => {
     setSort(e.target.value);
     setPage(1); // Reset to first page when sort changes
   };
 
-  // Main UI
   return (
     <div className="container mx-auto p-4">
       {/* Header Upper */}
@@ -175,7 +163,7 @@ function BookList() {
         {/* Sort dropdown */}
         <select
           value={sort}
-          onChange={handleSortChange}
+          onChange={(e) => handleSortChange(e)}
           className="border rounded-lg px-3 py-1.5 text-sm"
         >
           <option value="old">Sort by: 📅 Oldest First</option>
@@ -192,11 +180,10 @@ function BookList() {
         )}
       </div>
 
-      {/* Grid with fixed height */}
       <div
         className={`
         block
-        ${grid ? "lg:grid grid-cols-5 gap-4" : ""}
+        ${grid ? "grid grid-col-1 tablet:grid-cols-3 desktop:grid-cols-5 gap-4" : ""}
         `}
       >
         {renderBooks()}
@@ -213,17 +200,15 @@ function BookList() {
             Previous
           </button>
 
-          <form onSubmit={handleJumpToPage} className="flex items-center gap-1">
+          {/* <form onSubmit={handleJumpToPage} className="flex items-center gap-1">
             <input
-              ref={inputRef}
               type="text"
               value={inputPage}
-              onChange={handleInputChange}
               placeholder={String(page)} // Shows current page as placeholder
               className="w-12 text-center border rounded px-1 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               aria-label="Jump to page number"
             />
-          </form>
+          </form> */}
 
           <button
             onClick={handleNextPage}
