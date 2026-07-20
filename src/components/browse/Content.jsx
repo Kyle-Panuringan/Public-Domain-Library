@@ -1,6 +1,6 @@
 import BookList from "./BookList";
 import line2 from "../../assets/line2.png";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { languages } from "../data/languages";
 
 const filterSubjects = [
@@ -138,6 +138,24 @@ function Content() {
     );
   };
 
+  const languageMenuRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        languageMenuRef.current &&
+        !languageMenuRef.current.contains(event.target)
+      ) {
+        setIsLanguageMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const filteredLanguages = languageOptions.filter((language) =>
     language.name.toLowerCase().includes(search.toLowerCase()),
   );
@@ -189,19 +207,19 @@ function Content() {
   return (
     <div className="bg-[#EDE6DB] p-9 flex flex-col lg:flex-row">
       {/* Right */}
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center pt-8">
         {/* Search */}
-        <div className="flex w-full lg:w-xs">
+        <div className="flex w-full lg:w-xs bg-black rounded border-2 border-[#E5AB14] ">
           <input
             type="search"
             name=""
             id=""
             placeholder="Search Books/Authors..."
-            className="border border-black w-full px-2 py-1"
+            className="w-full p-2 placeholder-[#E5AB14] text-[#E5AB14] focus:outline-none"
           />
-          <button className="w-10 border border-black">⌕</button>
+          <button className="w-10 text-[#E5AB14]">⌕</button>
         </div>
-        <div className="m-6 p-4 border border-[#E5AB14] lg:self-start w-full lg:w-xs">
+        <div className="m-6 p-4 border-2 border-[#E5AB14] lg:self-start w-full lg:w-xs rounded">
           <div>
             <h2 className="uppercase text-center">Subjects</h2>
             <img
@@ -220,7 +238,7 @@ function Content() {
               className="w-50 mx-auto pt-1 pb-2"
             />
 
-            <div className="relative">
+            <div className="relative" ref={languageMenuRef}>
               <div
                 className="
                     absolute
@@ -235,26 +253,14 @@ function Content() {
                   <input
                     type="text"
                     value={search}
+                    placeholder={`${selectedLanguages.length > 0 ? selectedLanguages.map((lang) => lang.name).join(", ") : "All"}`}
                     onChange={(e) => setSearch(e.target.value)}
                     onFocus={() => setIsLanguageMenuOpen(true)}
-                    className="w-full border border-black text-center"
+                    className="w-full border border-black text-center focus:outline-none"
+                    title={`${selectedLanguages.length > 0 ? selectedLanguages.map((lang) => lang.name).join(", ") : "All"}`}
                   />
                   {isLanguageMenuOpen && (
-                    <ul className="overflow-auto h-55 border border-black rounded">
-                      {/* <li className="flex flex-row justify-between items-center p-1">
-                      <label htmlFor="allLanguage" className="w-full ">
-                        All Language
-                      </label>
-                      <input
-                        type="checkbox"
-                        // checked={selectedLanguages.includes("all")}
-                        // onChange={() => toggleLanguage("all")}
-                        // disabled={
-                        //   selectedLanguages.length === 1 &&
-                        //   selectedLanguages[0] === "all"
-                        // }
-                      />
-                    </li> */}
+                    <ul className="overflow-auto h-55 border border-black">
                       {selectedLanguages.length > 0 && (
                         <>
                           <h4 className="text-center">Selected</h4>
